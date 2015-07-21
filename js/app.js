@@ -18,7 +18,7 @@ var Enemy = function(startX, startY) {
     this.x = startX;
     this.y = startY;
     this.selectSpeed();
-}
+};
 
 // Update the enemy"s position, required method for game and check for collision with player
 // Parameter: dt, a time delta between ticks
@@ -35,7 +35,7 @@ Enemy.prototype.update = function(dt) {
 	}
 	
 	this.checkForColision();
-}
+};
 
 //Determine of an Enemy overlaps a Player object
 Enemy.prototype.checkForColision = function() {
@@ -48,18 +48,18 @@ Enemy.prototype.checkForColision = function() {
 			player.knockback();
 		}
 	}	
-}
+};
 
 //Set this speed for a given enemy
 Enemy.prototype.selectSpeed = function() {
 	var speedIndex = Math.floor((Math.random() * 8));
 	this.speed = baseSpeeds[speedIndex] * (1 + (gameLevel * 0.2));
-}
+};
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -71,14 +71,14 @@ var Player = function() {
     this.farthestThisRound = 0;
     this.y = yPositions[0];
     this.score = 0;
-}
+};
 
 //Update the game based on the player"s stats
 Player.prototype.update = function(dt) {
 	gameLevel = Math.floor(this.score / 500) + 1;
 	document.getElementById("playerScore").textContent = this.score;
 	document.getElementById("playerLevel").textContent = gameLevel;
-}
+};
 
 //Based on the allowed functions, move the player around the screen.
 Player.prototype.handleInput = function(keyCode) {
@@ -122,17 +122,18 @@ Player.prototype.handleInput = function(keyCode) {
 			break;
 	}
 	this.update();
-}
+};
 
 //When the player gets hit by an enemy, it is knocked back a row and points are deducted.
 Player.prototype.knockback = function() {
 	this.score = this.score - 100;
 	this.handleInput("down");
-}
+};
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
