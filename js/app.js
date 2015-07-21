@@ -117,7 +117,7 @@ Player.prototype.handleInput = function(keyCode) {
 		case "down":
 			if (this.rowIndex >= 1) {
 				this.rowIndex--;
-				this.y = yPositions[this.rowIndex]
+				this.y = yPositions[this.rowIndex];
 			}
 			break;
 	}
