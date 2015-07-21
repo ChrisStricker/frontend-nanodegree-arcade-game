@@ -5,6 +5,10 @@ Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015
 
 for self-checking their submission.
 
+To Begin
+================
+
+Download this project and click index.html to start the game.
 
 Player Instructions
 ===================
