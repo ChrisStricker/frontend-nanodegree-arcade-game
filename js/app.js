@@ -1,8 +1,8 @@
 // Base speeds for enemies
-var baseSpeeds = [30, 35, 40, 45, 50, 55, 60, 65];
+var BASE_SPEEDS = [30, 35, 40, 45, 50, 55, 60, 65];
 
 // Y positions for good alignment on the grid
-var yPositions = [400, 310, 230, 145, 65, 0];
+var Y_POSITIONS = [400, 310, 230, 145, 65, 0];
 
 // Current game level.  
 var gameLevel = 1;
@@ -53,7 +53,7 @@ Enemy.prototype.checkForColision = function() {
 //Set this speed for a given enemy
 Enemy.prototype.selectSpeed = function() {
 	var speedIndex = Math.floor((Math.random() * 8));
-	this.speed = baseSpeeds[speedIndex] * (1 + (gameLevel * 0.2));
+	this.speed = BASE_SPEEDS[speedIndex] * (1 + (gameLevel * 0.2));
 };
 
 // Draw the enemy on the screen, required method for game
@@ -69,7 +69,7 @@ var Player = function() {
     this.x = 200;
     this.rowIndex = 0;
     this.farthestThisRound = 0;
-    this.y = yPositions[0];
+    this.y = Y_POSITIONS[0];
     this.score = 0;
 };
 
@@ -92,13 +92,13 @@ Player.prototype.handleInput = function(keyCode) {
 		case "up":
 			if (this.rowIndex < 5) {
 				this.rowIndex++;
-				this.y = yPositions[this.rowIndex];
+				this.y = Y_POSITIONS[this.rowIndex];
 				
 				//If the new position is at the water, give 
 				//extra points and reset the player"s position
 				if (this.rowIndex == 5) {
 					this.rowIndex = 0;
-					this.y = yPositions[this.rowIndex];
+					this.y = Y_POSITIONS[this.rowIndex];
 					this.score = this.score + 100;
 					this.farthestThisRound = 0;
 				} else {
@@ -117,7 +117,7 @@ Player.prototype.handleInput = function(keyCode) {
 		case "down":
 			if (this.rowIndex >= 1) {
 				this.rowIndex--;
-				this.y = yPositions[this.rowIndex];
+				this.y = Y_POSITIONS[this.rowIndex];
 			}
 			break;
 	}
@@ -140,9 +140,9 @@ Player.prototype.render = function() {
 var player = new Player();
 var allEnemies = [];
 
-allEnemies.push(new Enemy(0,yPositions[4]));
-allEnemies.push(new Enemy(0,yPositions[3]));
-allEnemies.push(new Enemy(0,yPositions[2]));
+allEnemies.push(new Enemy(0,Y_POSITIONS[4]));
+allEnemies.push(new Enemy(0,Y_POSITIONS[3]));
+allEnemies.push(new Enemy(0,Y_POSITIONS[2]));
 	
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don"t need to modify this.
